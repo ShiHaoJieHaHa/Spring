@@ -1,0 +1,4 @@
+# Project exclude paths
+/microservice-consumer-movie/target/
+/microservice-discovery-eureka/target/
+/microservice-provider-user/target/

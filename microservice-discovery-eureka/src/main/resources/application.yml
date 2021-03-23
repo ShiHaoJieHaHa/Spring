@@ -1,0 +1,16 @@
+security:
+  basic:
+    enabled: true
+  user:
+    name: user
+    password: password555
+server:
+  port: 8761
+eureka:
+  client:
+     healthcheck:
+      enabled: true
+     register-with-eureka: false
+     fetch-registry: false
+     service-url:
+      defaultZone: http://user:password555@localhost:8761/eureka
