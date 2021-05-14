@@ -7,9 +7,13 @@ spring:
     hibernate:
       ddl-auto: none
   datasource:
-    platform: h2
-    schema: classpath:schema.sql
-    data: classpath:data.sql
+    #platform: h2
+    #schema: classpath:schema.sql,
+    #data: classpath:data.sql
+    username: root
+    password: root
+    url: jdbc:mysql://localhost:3306/shoppingmall?useUnicode=true&characterEncoding=utf-8&useSSL=true&serverTimezone=UTC
+    driver-class-name: com.mysql.jdbc.Driver
   application:
     name: microservice-provider-user
 logging:

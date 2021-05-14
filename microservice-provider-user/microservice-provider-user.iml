@@ -5,7 +5,9 @@
       <configuration>
         <setting name="validation-enabled" value="true" />
         <setting name="provider-name" value="Hibernate" />
-        <datasource-mapping />
+        <datasource-mapping>
+          <factory-entry name="entityManagerFactory" />
+        </datasource-mapping>
         <naming-strategy-map />
       </configuration>
     </facet>
@@ -47,10 +49,6 @@
     <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot-starter-aop:1.4.1.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-aop:4.3.3.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.aspectj:aspectjweaver:1.8.9" level="project" />
-    <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot-starter-jdbc:1.4.1.RELEASE" level="project" />
-    <orderEntry type="library" name="Maven: org.apache.tomcat:tomcat-jdbc:8.5.5" level="project" />
-    <orderEntry type="library" name="Maven: org.apache.tomcat:tomcat-juli:8.5.5" level="project" />
-    <orderEntry type="library" name="Maven: org.springframework:spring-jdbc:4.3.3.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.hibernate:hibernate-core:5.0.11.Final" level="project" />
     <orderEntry type="library" name="Maven: org.jboss.logging:jboss-logging:3.3.0.Final" level="project" />
     <orderEntry type="library" name="Maven: org.hibernate.javax.persistence:hibernate-jpa-2.1-api:1.0.0.Final" level="project" />
@@ -85,7 +83,11 @@
     <orderEntry type="library" name="Maven: org.springframework:spring-web:4.3.3.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-webmvc:4.3.3.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-expression:4.3.3.RELEASE" level="project" />
-    <orderEntry type="library" scope="RUNTIME" name="Maven: com.h2database:h2:1.4.192" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot-starter-jdbc:1.4.1.RELEASE" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.tomcat:tomcat-jdbc:8.5.5" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.tomcat:tomcat-juli:8.5.5" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework:spring-jdbc:4.3.3.RELEASE" level="project" />
+    <orderEntry type="library" name="Maven: mysql:mysql-connector-java:5.0.5" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.cloud:spring-cloud-starter-eureka:1.2.1.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.cloud:spring-cloud-starter:1.1.4.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.cloud:spring-cloud-context:1.1.4.RELEASE" level="project" />
