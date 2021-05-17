@@ -8,7 +8,6 @@
     <modules>
         <module>microservice-provider-user</module>
         <module>microservice-consumer-movie</module>
-        <module>microservice-consumer-movie/microservice-discovery-eureka</module>
         <module>microservice-discovery-eureka</module>
     </modules>
     <packaging>pom</packaging>
