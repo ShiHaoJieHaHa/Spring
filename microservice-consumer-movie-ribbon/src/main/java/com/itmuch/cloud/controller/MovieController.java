@@ -33,6 +33,7 @@ public class MovieController {
   @GetMapping("/test")
   public  String  test() {
     ServiceInstance serviceInstance = this.loadBalancerClient.choose("microservice-provider-user");
-    return "";
+    System.out.println("111" + ":" + serviceInstance.getServiceId() + ":" + serviceInstance.getHost() + ":" + serviceInstance.getPort());
+    return "1";
   }
 }
