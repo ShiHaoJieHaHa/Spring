@@ -15,8 +15,8 @@ public class MovieController {
   @Autowired
   private RestTemplate restTemplate;
 
-  @Value("${user.userServicePath}")
-  private String userServicePath;
+ // @Value("${user.userServicePath}")
+ // private String userServicePath;
   @Autowired
   private LoadBalancerClient loadBalancerClient;
 
@@ -33,7 +33,10 @@ public class MovieController {
   @GetMapping("/test")
   public  String  test() {
     ServiceInstance serviceInstance = this.loadBalancerClient.choose("microservice-provider-user");
-    System.out.println("111" + ":" + serviceInstance.getServiceId() + ":" + serviceInstance.getHost() + ":" + serviceInstance.getPort());
+    System.out.println("111" + ":" + serviceInstance.getHost()+ ":" + serviceInstance.getServiceId()+ ":" + serviceInstance.getPort());
     return "1";
+   /* ServiceInstance serviceInstance2 = this.loadBalancerClient.choose("microservice-provider-user2");
+    System.out.println("222" + ":" + serviceInstance2.getServiceId() + ":" + serviceInstance2.getHost() + ":" + serviceInstance2.getPort());*/
+
   }
 }
