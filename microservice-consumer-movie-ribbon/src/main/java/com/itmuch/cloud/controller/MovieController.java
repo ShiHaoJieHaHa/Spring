@@ -12,31 +12,30 @@ import org.springframework.web.client.RestTemplate;
 
 @RestController
 public class MovieController {
-  @Autowired
-  private RestTemplate restTemplate;
+    @Autowired
+    private RestTemplate restTemplate;
 
- // @Value("${user.userServicePath}")
- // private String userServicePath;
-  @Autowired
-  private LoadBalancerClient loadBalancerClient;
+    // @Value("${user.userServicePath}")
+    // private String userServicePath;
+    @Autowired
+    private LoadBalancerClient loadBalancerClient;
 
 
-  // http://localhost:7900/simple/
-  // VIP virtual IP   虚拟ip
-  // HAProxy Heartbeat
-  @GetMapping("/movie/{id}")
-  public User findById(@PathVariable Long id) {
-    //return this.restTemplate.getForObject(this.userServicePath + id, User.class);
-    return this.restTemplate.getForObject("http://microservice-provider-user/simple/" + id, User.class);
-  }
+    // http://localhost:7900/simple/
+    // VIP virtual IP   虚拟ip
+    // HAProxy Heartbeat
+    @GetMapping("/movie/{id}")
+    public User findById(@PathVariable Long id) {
+        //return this.restTemplate.getForObject(this.userServicePath + id, User.class);
+        return this.restTemplate.getForObject("http://microservice-provider-user/simple/" + id, User.class);
+    }
 
-  @GetMapping("/test")
-  public  String  test() {
-    ServiceInstance serviceInstance = this.loadBalancerClient.choose("microservice-provider-user");
-    System.out.println("111" + ":" + serviceInstance.getHost()+ ":" + serviceInstance.getServiceId()+ ":" + serviceInstance.getPort());
-    return "1";
-   /* ServiceInstance serviceInstance2 = this.loadBalancerClient.choose("microservice-provider-user2");
-    System.out.println("222" + ":" + serviceInstance2.getServiceId() + ":" + serviceInstance2.getHost() + ":" + serviceInstance2.getPort());*/
-
-  }
+    @GetMapping("/test")
+    public String test() {
+        ServiceInstance serviceInstance = this.loadBalancerClient.choose("microservice-provider-user");
+        System.out.println("111" + ":" + serviceInstance.getHost() + ":" + serviceInstance.getServiceId() + ":" + serviceInstance.getPort());
+        ServiceInstance serviceInstance2 = this.loadBalancerClient.choose("microservice-provider-users");
+        System.out.println("222" + ":" + serviceInstance2.getServiceId() + ":" + serviceInstance2.getHost() + ":" + serviceInstance2.getPort());
+        return "1";
+    }
 }
