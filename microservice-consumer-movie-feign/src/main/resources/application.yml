@@ -6,8 +6,11 @@ server:
 eureka:
   client:
     healthcheck:
-      enabled: true
+  #   enabled: true
     serviceUrl:
       defaultZone: http://user:password555@localhost:8761/eureka
   instance:
     prefer-ip-address: true
+feign:
+  hystrix:
+   emabled: true
