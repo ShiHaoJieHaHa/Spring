@@ -11,11 +11,16 @@ spring:
     #schema: classpath:schema.sql,
     #data: classpath:data.sql
     username: root
-    password: root
+   # password: root
+    password: 12345678
     url: jdbc:mysql://localhost:3306/shoppingmall?useUnicode=true&characterEncoding=utf-8&useSSL=true&serverTimezone=UTC
-    driver-class-name: com.mysql.jdbc.Driver
+    #driver-class-name: com.mysql.jdbc.Driver
+    driver-class-name: com.mysql.cj.jdbc.Driver
   application:
     name: microservice-provider-user
+  cache:
+    caffeine:
+      spec: maximumSize=500, expireAfterAccess=30s
 logging:
   level:
     root: INFO
