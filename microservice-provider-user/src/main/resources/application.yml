@@ -20,7 +20,7 @@ spring:
     name: microservice-provider-user
   cache:
     caffeine:
-      spec: maximumSize=500, expireAfterAccess=30s
+      spec: maximumSize=500, expireAfterAccess=30s,expireAfterWrite=10s,refreshAfterWrite=20s
 logging:
   level:
     root: INFO
