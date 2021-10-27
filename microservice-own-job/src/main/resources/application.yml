@@ -20,7 +20,7 @@ spring:
     name: microservice-own-job
   cache:
     caffeine:
-      spec: maximumSize=500, expireAfterAccess=30s
+      spec: maximumSize=500, expireAfterAccess=30s，expireAfterWrite=10s,refreshAfterWrite=5s
 logging:
   level:
     root: INFO
