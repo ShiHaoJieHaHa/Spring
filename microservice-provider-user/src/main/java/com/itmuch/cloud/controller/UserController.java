@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.itmuch.cloud.service.UserService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.client.ServiceInstance;
 import org.springframework.cloud.client.discovery.DiscoveryClient;
@@ -34,9 +36,11 @@ public class UserController {
     @Autowired
     private UserService service;
 
+    private static final Logger logger = LoggerFactory.getLogger(UserController.class);
+
     @GetMapping("/simple/{id}")
     public User findById(@PathVariable Long id) {
-
+        logger.info("调用findById方法");
         return this.userRepository.findOne(id);
     }
 
