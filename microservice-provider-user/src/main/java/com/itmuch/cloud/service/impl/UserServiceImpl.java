@@ -18,6 +18,6 @@ public class UserServiceImpl  implements UserService {
     @Override
     public User findById(Long id) {
         logger.info("根据ID调用接口");
-        return userRepository.findOne(id);
+        return userRepository.findById(id).get();
     }
 }

@@ -1,9 +1,12 @@
 package com.itmuch.cloud.controller;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import com.itmuch.cloud.service.UserService;
+import com.itmuch.cloud.utils.AtomicCounter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,9 +42,17 @@ public class UserController {
     private static final Logger logger = LoggerFactory.getLogger(UserController.class);
 
     @GetMapping("/simple/{id}")
-    public User findById(@PathVariable Long id) {
+    public Map<Object, Object> findById(@PathVariable Long id) {
+        Map<Object, Object> map = new HashMap<>();
         logger.info("调用findById方法");
-        return this.userRepository.findOne(id);
+        if (userRepository.findById(id).isPresent()) {
+            map.put("count", AtomicCounter.getInstance().getValue());
+            map.put("user", this.userRepository.findById(id).get());
+            return map;
+        } else {
+            logger.error("没有查询到该id对应的数据");
+        }
+        return null;
     }
 
     @GetMapping("/service")
@@ -56,8 +67,9 @@ public class UserController {
     }
 
     @GetMapping("/instance-info")
-    public ServiceInstance showInfo() {
-        ServiceInstance localServiceInstance = this.discoveryClient.getLocalServiceInstance();
+    public List<String> showInfo() {
+        //ServiceInstance localServiceInstance = this.discoveryClient.getLocalServiceInstance();
+        List<String> localServiceInstance = discoveryClient.getServices();
         return localServiceInstance;
     }
 
@@ -77,6 +89,5 @@ public class UserController {
         list.add(user2);
         list.add(user3);
         return list;
-
     }
 }
