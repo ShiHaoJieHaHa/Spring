@@ -27,7 +27,7 @@ logging:
     org.hibernate: INFO
     org.hibernate.type.descriptor.sql.BasicBinder: TRACE
     org.hibernate.type.descriptor.sql.BasicExtractor: TRACE
-    com.itmuch: DEBUG
+    com.own: DEBUG
 eureka:
   client: 
     serviceUrl:
