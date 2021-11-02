@@ -34,16 +34,18 @@ public class TestController {
     @ApiOperation("根据id查询用户信息")
     @GetMapping("/simple/{id}")
     public Map<String, Object> findById(@PathVariable @Validated @NotNull Long id) {
+        Map<String, Object> map = new HashMap<>();
         if (userRepository.findById(id).isPresent()) {
-            Map<String, Object> map = new HashMap<>();
+
             map.put("count", AtomicCounter.getInstance().getValue());
             map.put("user", this.userRepository.findById(id).get());
             logger.info("返回数据成功");
             return map;
         } else {
+            map.put("logger","查询不到id对应的数据，请稍后再查看");
             logger.error("没有查询到id对应的数据");
+            return map;
         }
-        return null;
     }
 
 }
