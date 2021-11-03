@@ -1,8 +1,7 @@
-package com.itmuch.cloud.service.impl;
+package com.itmuch.cloud.service;
 
 import com.itmuch.cloud.entity.User;
 import com.itmuch.cloud.repository.UserRepository;
-import com.itmuch.cloud.service.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
