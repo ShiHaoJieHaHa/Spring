@@ -8,7 +8,7 @@ eureka:
     healthcheck:
   #   enabled: true
     serviceUrl:
-      defaultZone: http://user:password555@localhost:8761/eureka
+      defaultZone: http://localhost:8761/eureka
   instance:
     prefer-ip-address: true
 feign:
