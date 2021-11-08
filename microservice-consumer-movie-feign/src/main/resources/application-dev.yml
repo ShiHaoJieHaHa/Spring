@@ -13,4 +13,11 @@ eureka:
     prefer-ip-address: true
 feign:
   hystrix:
-   emabled: true
+    emabled: true
+    command:
+      default:
+        execution:
+          isolation:
+            thread:
+              timeoutInMilliseconds: 10000
+
