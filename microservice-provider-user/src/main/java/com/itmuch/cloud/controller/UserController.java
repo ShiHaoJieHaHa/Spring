@@ -5,8 +5,11 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import com.itmuch.cloud.config.SwaggerConfig;
 import com.itmuch.cloud.service.UserService;
 import com.itmuch.cloud.utils.AtomicCounter;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -23,7 +26,7 @@ import com.itmuch.cloud.repository.UserRepository;
 import com.netflix.appinfo.InstanceInfo;
 import com.netflix.discovery.EurekaClient;
 import javax.validation.constraints.NotNull;
-
+@Api(tags = SwaggerConfig.Use_info)
 @Slf4j
 @Validated
 @RestController
@@ -44,6 +47,7 @@ public class UserController {
 
     private static final Logger logger = LoggerFactory.getLogger(UserController.class);
 
+    @ApiOperation("根据id查询用户信息")
     @GetMapping("/simple/{id}")
     public Map<Object, Object> findById(@PathVariable Long id) {
         Map<Object, Object> map = new HashMap<>();
@@ -57,12 +61,13 @@ public class UserController {
         }
         return null;
     }
-
+    @ApiOperation("查询用户信息")
     @GetMapping("/service")
     public User findId(@RequestParam @NotNull Long id) {
         return service.findById(id);
     }
 
+    @ApiOperation("查询调用的实例名称")
     @GetMapping("/eureka-instance")
     public String serviceUrl() {
         InstanceInfo instance = this.eurekaClient.getNextServerFromEureka("MICROSERVICE-PROVIDER-USER", false);
