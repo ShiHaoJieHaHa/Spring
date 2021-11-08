@@ -23,10 +23,11 @@ public class MovieController {
 
 
     @GetMapping("/movie/{id}")
-    @HystrixCommand(fallbackMethod = "errorById",commandProperties =
+  /*  @HystrixCommand(fallbackMethod = "errorById",commandProperties =
             { @HystrixProperty(name="execution.isolation.thread.timeoutInMilliseconds"
              ,value = "3000")
-    })
+    })*/
+    @HystrixCommand(fallbackMethod = "errorById")
     public Map<String, Object> findById(@PathVariable Long id) {
         Map<String, Object> map = new HashMap<>();
         map.put("user", this.userFeignClient.findById(id));
