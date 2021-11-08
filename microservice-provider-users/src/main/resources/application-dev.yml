@@ -1,0 +1,37 @@
+server:
+  port: 7911
+
+spring:
+  application:
+    name: microservice-provider-users
+
+  datasource:
+    username: root
+    password: 12345678
+    url: jdbc:mysql://localhost:3306/shoppingmall?useUnicode=true&characterEncoding=utf-8&useSSL=true&serverTimezone=UTC
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+  cache:
+    caffeine:
+      spec: maximumSize=500, expireAfterAccess=30s，expireAfterWrite=10s,refreshAfterWrite=5s
+  jpa:
+    generate-ddl: false
+    show-sql: true
+    hibernate:
+      ddl-auto: none
+  redis:
+    lettuce:
+      pool:
+        max-wait: 20ms
+        max-active: 100
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+logging:
+  level:
+    root: info
+    com:
+    demo: DEBUG
+    org:
+     hibernate: TRACE
