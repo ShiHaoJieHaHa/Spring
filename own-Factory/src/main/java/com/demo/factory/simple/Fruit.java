@@ -1,4 +1,4 @@
-package com.demo.factory;
+package com.demo.factory.simple;
 
 public interface Fruit {
     void plantFruit();

@@ -1,4 +1,4 @@
-package com.demo.factory;
+package com.demo.factory.simple;
 
 public class FruitFactory {
     public static Fruit getFurit(String fruitName) {
