@@ -1,5 +1,7 @@
 package com.itmuch.cloud.controller;
 
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +16,7 @@ import com.itmuch.cloud.entity.User;
 import java.util.HashMap;
 import java.util.Map;
 
+@Api(tags = "用户操作模块API")
 @RestController
 public class MovieController {
     private static final Logger logger = LoggerFactory.getLogger(MovieController.class);
@@ -24,16 +27,11 @@ public class MovieController {
     private String userServicePath;
 
     @GetMapping("/movie/{id}")
+    @ApiOperation(value = "根据id获取用户信息")
     public Map<String, Object> findById(@PathVariable Long id) {
         Map<String, Object> map = new HashMap<>();
-        if (id != 0) {
-            map.put("result", restTemplate.getForObject(this.userServicePath + id, Map.class));
-            logger.info("调用成功返回结果");
-            return map;
-        } else {
-            map.put("errlog", "该提供服务者还没有找到这条数据,等稍后再查询");
-            logger.error("该提供服务者还没有找到这条数据");
-            return map;
-        }
+        map.put("result", restTemplate.getForObject(this.userServicePath + id, Map.class));
+        logger.info("调用成功返回结果");
+        return map;
     }
 }
