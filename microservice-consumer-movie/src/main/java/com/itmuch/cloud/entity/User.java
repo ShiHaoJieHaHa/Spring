@@ -1,7 +1,9 @@
 package com.itmuch.cloud.entity;
 
-import java.math.BigDecimal;
+import io.swagger.annotations.ApiModel;
 
+import java.math.BigDecimal;
+@ApiModel("用户实体类")
 public class User {
   private Long id;
 
