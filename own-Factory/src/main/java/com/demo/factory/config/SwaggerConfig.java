@@ -14,14 +14,14 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @EnableSwagger2
 public class SwaggerConfig {
     public static final String Use_info = "用户模块";
-    //public static final String Use_test = "用户测试";
+    public static final String name_info = "名字模块";
     @Bean
     @Profile("!prod")
     @org.jetbrains.annotations.NotNull
    public  Docket docket(){
         return  new Docket(DocumentationType.SWAGGER_2)
-                .tags(new Tag(Use_info,"user相关")
-                 //new Tag(Use_test,"测试")
+                .tags(new Tag(Use_info,"用户模块相关"),
+                 new Tag(name_info,"名字模块相关")
                 )
                 .genericModelSubstitutes(DeferredResult.class)
                 .useDefaultResponseMessages(false)
