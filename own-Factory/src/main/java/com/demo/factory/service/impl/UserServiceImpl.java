@@ -10,16 +10,22 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class UserServiceImpl implements UserService {
-    private static  final Logger logger= LoggerFactory.getLogger(UserServiceImpl.class);
+    private static final Logger logger = LoggerFactory.getLogger(UserServiceImpl.class);
     @Autowired
     private UserRepository userRepository;
+
     @Override
     public User getUserInfo(Long id) {
-    if (userRepository.findById(id).isPresent()){
-        logger.info("已查到想要的数据");
-        return userRepository.findById(id).get();
-    }
+        if (userRepository.findById(id).isPresent()) {
+            logger.info("已查到想要的数据");
+            return userRepository.findById(id).get();
+        }
         logger.error("没有查询到想要的结果数据");
         return null;
+    }
+
+    @Override
+    public User getUserName(String name) {
+        return userRepository.getUserName(name);
     }
 }
