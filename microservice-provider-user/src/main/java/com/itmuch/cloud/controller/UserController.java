@@ -61,6 +61,14 @@ public class UserController {
         }
         return null;
     }
+    @ApiOperation("模拟post请求")
+    @RequestMapping(value = "/findPostId",method =RequestMethod.POST,produces ="application/json")
+    public User findPostId(@RequestParam  Long id) {
+        User user= this.userRepository.findById(id).get();
+        return user;
+    }
+
+
     @ApiOperation("查询用户信息")
     @GetMapping("/service")
     public User findId(@RequestParam @NotNull Long id) {
